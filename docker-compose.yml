@@ -1,0 +1,12 @@
+version: '3'
+services:
+  xlsx2image:  # 服务名称
+    # 基础镜像
+    build: .
+    container_name: local_xlsx2image  # 容器名称
+    ports:
+      - "30001:80"
+    ipc: host  # 共享主机/dev/shm
+    volumes:  # 挂载目录
+      - ./:/root/workspace/Xlsx2Image
+    restart: always  # 容器出现问题自动重启, 保证主机重启时该容器也启动
